@@ -8,7 +8,7 @@ bin-release/
 .settings/
 .idea/
 data/*
-.DS_Store
+*/.DS_Store
 
 # Executables
 *.swf
