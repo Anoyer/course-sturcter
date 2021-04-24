@@ -5,7 +5,7 @@
 # Author 自己改
 
 __all__ = [
-    "read_csv_from_file",
+    "read_data_from_file",
     "write_data_to_csv",
     "read_json_from_file"
 ]
@@ -18,7 +18,7 @@ import json
 import pandas as pd
 
 
-# 支持从execl、xlsx、csv中读取数据
+# 支持从excel、xlsx、csv中读取数据
 def read_data_from_file(path_of_file: str):
     if not os.path.exists(path_of_file):
         return pd.DataFrame({})
