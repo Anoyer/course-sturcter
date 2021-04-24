@@ -18,13 +18,14 @@ import json
 import pandas as pd
 
 
-def read_csv_from_file(path_of_file):
+# 支持从execl、xlsx、csv中读取数据
+def read_data_from_file(path_of_file: str):
     if not os.path.exists(path_of_file):
         return pd.DataFrame({})
 
     try:
         with open(path_of_file) as file:
-            data = pd.read_csv(file)
+            data = eval(f"pd.read_{path_of_file.split('.')[-1]}(file)")
         return data
     except Exception as e:
         print(str(e))
