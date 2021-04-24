@@ -8,13 +8,16 @@ bin-release/
 .settings/
 .idea/
 */.DS_Store
+.DS_Store
+
 
 # Executables
 *.swf
 *.air
 *.ipa
 *.apk
-
+*.xlsx
+*.csv
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
