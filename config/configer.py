@@ -17,6 +17,7 @@ def load_data(run_path):
     global __global_dict
     __global_dict.update(read_json_from_file(os.path.join(run_path, "config/config.json")))
     set_key("run_path", run_path)
+    set_key("dataset_path", os.path.join(run_path, 'dataset'))
 
 
 def set_key(key, value):

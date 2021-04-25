@@ -22,10 +22,11 @@ import pandas as pd
 def read_data_from_file(path_of_file: str):
     if not os.path.exists(path_of_file):
         return pd.DataFrame({})
-
+    print(path_of_file)
     try:
-        with open(path_of_file) as file:
-            data = eval(f"pd.read_{path_of_file.split('.')[-1]}(file)")
+        data = eval(
+            f"pd.read_{path_of_file.split('.')[-1] if path_of_file.split('.')[-1] != 'xlsx' else 'excel'}"
+            f"(path_of_file)")
         return data
     except Exception as e:
         print(str(e))
