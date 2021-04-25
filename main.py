@@ -17,7 +17,6 @@ def get_run_path():
 
 
 if __name__ == "__main__":
-    print("ok")
     configer.load_data(get_run_path())
     # 获取专业数据
     A = DataSet("2014-2015_计科.csv")
@@ -33,7 +32,7 @@ if __name__ == "__main__":
         w.write(str(important))
     print("ok")
 
-    # 获取课程成绩
+    # 获取班级课程成绩
     A.get_courses_data(important)
     B.get_courses_data(important)
     C.get_courses_data(important)

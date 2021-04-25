@@ -35,9 +35,12 @@ class DataSet:
     def get_courses_data(self, courses):
         for course in courses:
             data = self.data.loc[self.data["ZWMC"] == course]
-            common.write_data_to_csv(
-                data, os.path.join(configer.get_value("dataset_path"),
-                                   f'csv/{self.data_file_name}_{configer.get_value("special")}_{course}.csv'))
+            grades = set(grade[:-2] for grade in list(data["BJMC"].values))
+            for grade in grades:
+                grade_data = data.loc[lambda x: x["BJMC"].str.startswith(grade)]
+                common.write_data_to_csv(
+                    grade_data, os.path.join(configer.get_value("dataset_path"),
+                                             f'csv/{self.data_file_name}_{grade}_{course}.csv'))
 
 
 # 计算数据交集
