@@ -19,12 +19,22 @@ def get_run_path():
 if __name__ == "__main__":
     print("ok")
     configer.load_data(get_run_path())
-    print(configer.__global_dict["special"])
-    print(get_important_subject([1, 4], [2, 4], [4, 5], [4, 5]))
+    # 获取专业数据
+    A = DataSet("2014-2015_计科.csv")
+    B = DataSet("2016-2017_计科.csv")
+    C = DataSet("2018-2019_计科.csv")
+    A.get_special_data()
+    B.get_special_data()
+    C.get_special_data()
 
-    # A = DataSet("1.csv")
-    # # A.get_special_data()
-    # data = A.get_column("ZWMC")
-    # print(data)
-    #common.write_data_to_csv(data, os.path.join(configer.get_value("dataset_path"), "csv/2.csv"))
+    # 获取课程交集
+    important = get_important_subject(A.get_column("ZWMC"), B.get_column("ZWMC"), C.get_column("ZWMC"))
+    with open(os.path.join(configer.get_value("dataset_path"), "csv/important_sub.txt"), "w+") as w:
+        w.write(str(important))
+    print("ok")
+
+    # 获取课程成绩
+    A.get_courses_data(important)
+    B.get_courses_data(important)
+    C.get_courses_data(important)
 
